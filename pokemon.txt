@@ -1,0 +1,50 @@
+CREATE DATABASE pokemon_db;
+
+USE pokemon_db;
+
+CREATE TABLE pokemonType(
+typeId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+pokeTypeName VARCHAR (255)
+);
+
+
+CREATE TABLE pokeName(
+nameId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+pokemonName VARCHAR (255),
+healthPoints INT,
+attackPoints INT,
+deffensePoints INT,
+pokeTypeId INT NOT NULL,
+CONSTRAINT fk_pokeType
+FOREIGN KEY (pokeTypeId)
+REFERENCES pokemonType(typeId)
+	ON UPDATE CASCADE
+    ON DELETE RESTRICT
+);
+
+INSERT INTO pokemonType (pokeTypeName)
+VALUES('Fire'),
+('Water'),
+('Normal'),
+('Ground'),
+('Electric');
+
+INSERT INTO pokeName(pokemonName, healthPoints, attackPoints, deffensePoints, pokeTypeId)
+VALUES 
+('Chander', 50, 35, 40, 1),
+('Squirtle', 50, 30, 50, 2),
+('Pikachu', 50, 35, 30, 5);
+
+SELECT * FROM pokeName;
+
+
+
+
+
+
+
+
+
+
+
+
